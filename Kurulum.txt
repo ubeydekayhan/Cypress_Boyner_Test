@@ -87,3 +87,5 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./node_modules/.bin/cypress-tags run -e TAGS='not @smoke' ==> tagi  @smoke olanlar haric hepsini calistirir
 
 ) windowsta hata alinca asagidaki kod yazilir
+
+nuri kara branch ekledim
