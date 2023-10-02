@@ -6,6 +6,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 Given('Boyner sitesine git', () => {
     cy.visit('https://www.boyner.com.tr')
+    
 });
 
 When('erkek menusune bas', () =>{
