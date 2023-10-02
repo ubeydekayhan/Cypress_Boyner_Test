@@ -6,11 +6,12 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 Given('Boyner sitesine git', () => {
     cy.visit('https://www.boyner.com.tr')
-    
+
 });
 
 When('erkek menusune bas', () =>{
     cy.get('.header-top_headerTopSearchInput__hZ7mw').type(searchText)
+    
 })
 
 Then('Erkek penceresinde oldugunu dogrula',() => {
