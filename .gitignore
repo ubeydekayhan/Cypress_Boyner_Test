@@ -3,3 +3,5 @@ node_modules
 .cypress.config.js
 Kurulum.txt
 .package.json
+package.json
+cypress.config.js
