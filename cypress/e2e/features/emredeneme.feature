@@ -1,1 +1,0 @@
-# bu branch açmak için yapılan deneme
