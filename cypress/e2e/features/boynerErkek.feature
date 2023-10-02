@@ -1,4 +1,4 @@
-eature: Boyner
+Feature: Boyner
 	Scenario: Boyner
 		Given Boyner sitesine git
         When erkek menusune bas
