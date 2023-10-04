@@ -22,9 +22,11 @@ And('arama kutusuna ceket yaz', (searchText)=>{
     cy.get('.header-top_headerTopSearchInput__hZ7mw').type(searchText)
 })
 
+
 And('onerilen siralamayi fiyat dusukten yuksege yap',() => {
     cy.get('.header-top_headerTopSearchInput__hZ7mw').type(searchText)
 })
+
 
 Then('fiyatin dusukten yuksege oldugunu dogrula',() => {
     cy.get('.header-top_headerTopSearchInput__hZ7mw').type(searchText)
