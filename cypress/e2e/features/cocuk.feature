@@ -1,3 +1,3 @@
 Feature: google
 Scenario: google
-Given google sitesine git
+Given boyner sitesine git
