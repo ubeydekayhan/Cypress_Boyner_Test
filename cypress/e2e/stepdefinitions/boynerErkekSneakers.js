@@ -8,7 +8,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     let data;
     before(() => {
         //fixture klasorundan boynerData dosyasinda olusturulan datalari okumak icin
-        cy.fixture("boynerData").then(function (fixtureData) {
+        cy.fixture("boynerErkek").then(function (fixtureData) {
             data = fixtureData;
            
         })
