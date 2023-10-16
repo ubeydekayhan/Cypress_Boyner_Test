@@ -44,7 +44,7 @@ And('enter email',() => {
    cy.wait(3000)
     cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(data.email)
 
- //cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(mail.email())
+ cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(mail.email())
    // cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type("hakandenememail@gmail.com")
 })
 
