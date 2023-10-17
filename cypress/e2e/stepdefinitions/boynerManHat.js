@@ -1,7 +1,7 @@
 import { Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/steps";
 import { fa, faker } from '@faker-js/faker';
 const mail = require("../../POM/boyner");
-
+import { boynerMan } from "../../pages/boynerMan";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
@@ -35,23 +35,23 @@ Given('Go to Boyner', () => {
 });
 
 When('click login button',() =>  {
-    cy.get(':nth-child(1) > .header-top_cardIcon__CBiyn > .sc-fqkvVR').click()
+    boynerMan.elements.login().click()
 })
 
 And('enter email',() => {
-
+  let password = faker.internet.password();
    // const email = faker.internet.email()
-   cy.wait(3000)
-    cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(data.email)
+   login(data.email, password)
+   //login(data.email, data.password)
 
- cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(mail.email())
+ //cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(mail.email())
    // cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type("hakandenememail@gmail.com")
 })
 
 And('enter password',() => {
-    let password = faker.internet.password();
-   // cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw > .input_inputContent__emKRb').type("123hakan.")
-    cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw > .input_inputContent__emKRb').type(data.password)
+    
+   
+   
 })
 
 And('click to login',() => {
@@ -70,21 +70,21 @@ Then('verify login',() => {
 })
 
 And('Click the Man menu', () => {
-    cy.get(':nth-child(2) > .mega-menu_gift__ccvMi > span').trigger('mouseover', {force:true});
+    boynerMan.elements.erkekMenu().trigger('mouseover', {force:true});
     
  
   });
 
   And('Select the Hat link', () => {
-    cy.get("a[href='/erkek-sapka-kasket-c-3392760'").click()
+    boynerMan.elements.hatLink().click()
  
   })
 
   And('Select the Puma mark Hat', () => {
     cy.wait(3000)
-    cy.get('[data-key="4"] > .product-item_root__6ZVGl > .product-item_content__9CfBp > a > .product-item_brand__LFImW').click({force: true})
+    boynerMan.elements.puma().click({force: true})
  
-    cy.get('[data-key="4"] > .product-item_root__6ZVGl > .product-item_content__9CfBp > a > .product-item_brand__LFImW').invoke('text').then((text) => {
+    boynerMan.elements.puma().invoke('text').then((text) => {
         const expectedProduct = text.trim();
     
       });
@@ -92,17 +92,18 @@ And('Click the Man menu', () => {
   })
 
   And('Add to cart', () => {
-    cy.wait(3000)
-    cy.get('.login-button_box__dnyuU').click({force: true})
+    boynerMan.elements.addToCart().should('be.visible', { timeout: 3000 }, {force: true});
+    boynerMan.elements.addToCart().click({force: true})
  
   })
 
   And('go to cart', () => {
-    cy.get('.product-added-card_cardBoxRight__r4cGW > .login-button_box__dnyuU').click({force: true})
-    cy.wait(3000)
+    boynerMan.elements.goToCart().click({force: true})
+   
   })
   Then('verify added', () => {
     let actualProduct;
+    cy.get('a > strong').should('be.visible', { timeout: 3000 }, {force: true});
     cy.get('a > strong').invoke('text').then((text) => {
         actualProduct = text.trim();
        
