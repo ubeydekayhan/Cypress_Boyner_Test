@@ -41,7 +41,7 @@ When('click login button',() =>  {
 And('enter email',() => {
   let password = faker.internet.password();
    // const email = faker.internet.email()
-   login(data.email, password)
+   boynerMan.login(data.email, data.password)
    //login(data.email, data.password)
 
  //cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw').type(mail.email())
@@ -92,7 +92,7 @@ And('Click the Man menu', () => {
   })
 
   And('Add to cart', () => {
-    boynerMan.elements.addToCart().should('be.visible', { timeout: 3000 }, {force: true});
+    boynerMan.elements.addToCart().should('be.visible', { timeout: 10000 }, {force: true});
     boynerMan.elements.addToCart().click({force: true})
  
   })
@@ -103,7 +103,7 @@ And('Click the Man menu', () => {
   })
   Then('verify added', () => {
     let actualProduct;
-    cy.get('a > strong').should('be.visible', { timeout: 3000 }, {force: true});
+    cy.get('a > strong').should('be.visible', { timeout: 10000 }, {force: true});
     cy.get('a > strong').invoke('text').then((text) => {
         actualProduct = text.trim();
        
@@ -111,3 +111,23 @@ And('Click the Man menu', () => {
     expect(expectedProduct).to.equal(actualProduct)
  
   })
+
+  And('send {string} to searchbox',(aranacakUrun)=>{
+    
+    boynerMan.searchProduct(aranacakUrun);
+})
+And('select man to the sex menu',() => {
+  cy.get('.product-list_header__u25NX').should('be.visible', { timeout: 10000 }) //arama sonucu texti gorene kadar bekler
+
+    cy.get(':nth-child(1) > .collapse_root__SrpDo > .collapse_header__LAEcj > .collapse_title__y_n4k').click() //cinsiyet
+    cy.get('.checkbox-filter_container__DUb6C > :nth-child(2) > .checkbox_root__86e8X > :nth-child(1) > .checkbox_box__1NS2V').click() //erkek
+
+    
+
+})
+
+
+And('verify {string} or {string} in to the result',(urun, urun2) => {
+    
+    cy.verifyTextInElements("div[class='line-clamp-2 text-gray-600 h-9 text-xs leading-4.5 mb-1.5']",urun, urun2)
+})

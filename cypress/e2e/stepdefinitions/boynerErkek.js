@@ -74,3 +74,7 @@ Then('fiyatin dusukten yuksege oldugunu dogrula',() => {
         expect(secondProductPrice).to.be.greaterThan(firstProductPrice);
     });
 })
+
+
+
+

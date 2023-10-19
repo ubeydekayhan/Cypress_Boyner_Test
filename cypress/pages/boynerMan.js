@@ -4,8 +4,8 @@ class BoynerMan{
         result: () => cy.get('b'),
         resultList: () => cy.get('.product-list_total__TvMCW'),
         userIcon: () => cy.get(':nth-child(1) > .header-top_cardIcon__CBiyn > .sc-fqkvVR'),
-        eposta: () => cy.get("input[placeholder='E-posta adresin"),
-        password: () => cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw'),
+        eposta: () => cy.get('.login-form_emailWrapper__UcrQc > :nth-child(1) > .input_inputGrid__UFWmw > .input_inputContent__emKRb'),
+        password: () => cy.get(':nth-child(2) > :nth-child(1) > .input_inputGrid__UFWmw > .input_inputContent__emKRb'),
         girisYap: () => cy.get("button[class='login-button_box__dnyuU login-form_loginSubmitButton__PhqyF"),
         onerilenSiralam: () => cy.get('.product-list-options_selectedOption__STacx'),
         dusuktenYuksege: () => cy.get('.product-list-options_options__xWUw0 > :nth-child(2) > :nth-child(1)'),
@@ -23,10 +23,10 @@ class BoynerMan{
     }
 
     login(eposta, password){
-        cy.get("input[placeholder='E-posta adresin") .should('be.visible', { timeout: 3000 }, {force: true});
-        this.elements.eposta().type(eposta)
-        cy.get("input[placeholder='E-posta adresin") .should('be.visible', { timeout: 3000 }, {force: true});
-        this.elements.password().type(password)
+        this.elements.eposta().should('be.visible', { timeout: 10000 }, {force: true});
+        this.elements.eposta().type(eposta, {force:true})
+        this.elements.password().should('be.visible', { timeout: 3000 }, {force: true});
+        this.elements.password().type(password, {force:true})
 }
 
     searchProduct(product){
