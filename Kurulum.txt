@@ -1,7 +1,9 @@
+1) Konsola ilk yazilacak kod:
 npm init
+2) sonra cypress kurmak icin:
 npm install cypress --save-dev
 
-iframe handle icin yapilacaklar.
+3) iframe handle icin yapilacaklar.
 plugin indir
     npmjs.com sayfasindan https://www.npmjs.com/package/cypress-iframe linkine gir
     npm install -D cypress-iframe
@@ -13,13 +15,10 @@ plugin indir
     require('cypress-iframe');
     kodlarindan birini support klasorundeki e2e.js dosyasina yapistir.
 
+4) Drag drop icin
 npmjs.com sitesinden drag-drop plugin indir : npm install --save-dev @4tw/cypress-drag-drop
     kodu terminale yapistir
     import '@4tw/cypress-drag-drop' kodunu e2e.js dosyasina yapistir
-
-file upload için
- https://www.npmjs.com/package/cypress-file-upload sitesinden 
-    npm install --save-dev cypress-file-upload kodunu terminale yazariz
 
 CUCUMBER İÇİN
 1) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
@@ -64,7 +63,8 @@ import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";  k
 ebebek.js dosyasinin basina yapistirilir.
 7) feature file ile stepdefinition dosyasi ayni klasor icinde bulunmali.
 
-8) package.json dosyasına 
+DIGER YAPILANDIRMALAR
+1) package.json dosyasına 
 "author": "hakan kara",
   "license": "ISC",
   "devDependencies": {
@@ -79,7 +79,7 @@ ebebek.js dosyasinin basina yapistirilir.
   }
 ekledim
 
-8) TESTLERİ ÇALIŞTIRMA
+2) TESTLERİ ÇALIŞTIRMA
 ./node_modules/.bin/cypress run ==> tum testleri calistirir
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./node_modules/.bin/cypress-tags run -e TAGS='@smoke' ==> tagi @smoke olanlari calistirir
@@ -88,7 +88,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ) windowsta hata alinca asagidaki kod yazilir
 
-9) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
+3) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
 const app=window.top;
 if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.document.head.querySelector('[data-hide-command]')) {
     const style= app.document.createElement('style');
@@ -97,8 +97,9 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.
     app.document.head.appendChild(style);
 }
 
-10) command.js dosyasina metotlar koyulur. Bu metotlar icin kullanilan classlarda imporuta ihtiyac yoktur.
-11) pages klasor altina metot ve variable olusturulabilir. 
+4) command.js dosyasina metotlar koyulur. Bu metotlar icin kullanilan classlarda imporuta ihtiyac yoktur.
+
+5) pages klasor altina metot ve variable olusturulabilir. 
 Bu dosyadakiler baska dosyadan import edilebilmek icin pages altindaki dosyanin en altina su kod yazilir:
 import { boynerMan } from "../../pages/boynerMan";
 
@@ -106,3 +107,15 @@ bu dosyadan veri cekecek diger dosyalarin en ustune su kod yazilir:
 import { boynerMan } from "../../pages/boynerMan";
 
 sonrasinda sayfa icinde olusturulan boynerMan objesi ile oradan veriler ismi ile cekilir.
+
+6) file-upload icin
+
+ https://www.npmjs.com/package/cypress-file-upload sitesinden 
+    npm install --save-dev cypress-file-upload kodunu terminale yazariz
+
+    commands.js dosyasina
+    import 'cypress-file-upload'
+    yazariz
+
+    file-upload yapilan dosyada kod soyledir:
+     cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
