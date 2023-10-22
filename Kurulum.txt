@@ -87,3 +87,22 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./node_modules/.bin/cypress-tags run -e TAGS='not @smoke' ==> tagi  @smoke olanlar haric hepsini calistirir
 
 ) windowsta hata alinca asagidaki kod yazilir
+
+9) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
+const app=window.top;
+if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.document.head.querySelector('[data-hide-command]')) {
+    const style= app.document.createElement('style');
+    style.innerHTML='.command-name-request, .command-name-xhr {display: none}';
+    style.setAttribute('data-hide-command-log-request', '');
+    app.document.head.appendChild(style);
+}
+
+10) command.js dosyasina metotlar koyulur. Bu metotlar icin kullanilan classlarda imporuta ihtiyac yoktur.
+11) pages klasor altina metot ve variable olusturulabilir. 
+Bu dosyadakiler baska dosyadan import edilebilmek icin pages altindaki dosyanin en altina su kod yazilir:
+import { boynerMan } from "../../pages/boynerMan";
+
+bu dosyadan veri cekecek diger dosyalarin en ustune su kod yazilir:
+import { boynerMan } from "../../pages/boynerMan";
+
+sonrasinda sayfa icinde olusturulan boynerMan objesi ile oradan veriler ismi ile cekilir.
