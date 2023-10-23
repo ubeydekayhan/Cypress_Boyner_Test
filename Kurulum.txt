@@ -119,3 +119,5 @@ sonrasinda sayfa icinde olusturulan boynerMan objesi ile oradan veriler ismi ile
 
     file-upload yapilan dosyada kod soyledir:
      cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
+
+7) Metotlar support klasörü altında commands.js içine koyulur.

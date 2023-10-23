@@ -19,6 +19,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 Given('Go to Boyner', () => {
     cy.visit(data.url)
 })
+Given('Boyner sitesine git', () => {
+    cy.visit(data.url)
+})
 
 And ('Click on user icon', () =>{
    boynerMan.elements.userIcon().click()
@@ -37,6 +40,8 @@ And ('Click on Giriş Yap Button', () =>{
     boynerMan.elements.girisYap().click()
 })
 
+
+let searchText= 'ceket'
 And('arama kutusuna ceket yaz', (searchText)=>{
     boynerMan.searchProduct(searchText )
 })
