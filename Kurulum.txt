@@ -60,7 +60,8 @@ npm i --save-dev cypress-mochawesome-reporter komutu ile plugin yükle
 
 6) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";  kodu alinir
-ebebek.js dosyasinin basina yapistirilir.
+xxxxxx.js dosyasinin yani stepdefinition dosyasinin basina yapistirilir.
+
 7) feature file ile stepdefinition dosyasi ayni klasor icinde bulunmali.
 
 DIGER YAPILANDIRMALAR
@@ -106,7 +107,16 @@ import { boynerMan } from "../../pages/boynerMan";
 bu dosyadan veri cekecek diger dosyalarin en ustune su kod yazilir:
 import { boynerMan } from "../../pages/boynerMan";
 
-sonrasinda sayfa icinde olusturulan boynerMan objesi ile oradan veriler ismi ile cekilir.
+    let data;
+    before(() => {
+        //fixture klasorundan boynerData dosyasinda olusturulan datalari okumak icin
+        cy.fixture("boynerErkek").then(function (fixtureData) {
+            data = fixtureData;
+           
+        })
+    })
+
+sonrasinda sayfa icinde olusturulan data objesi ile oradan veriler ismi ile cekilir.
 
 6) file-upload icin
 
@@ -120,4 +130,5 @@ sonrasinda sayfa icinde olusturulan boynerMan objesi ile oradan veriler ismi ile
     file-upload yapilan dosyada kod soyledir:
      cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
 
-7) Metotlar support klasörü altında commands.js içine koyulur.
+7) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
+xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
