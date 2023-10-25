@@ -87,4 +87,60 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ./node_modules/.bin/cypress-tags run -e TAGS='not @smoke' ==> tagi  @smoke olanlar haric hepsini calistirir
 
+
 ) windowsta hata alinca asagidaki kod yazilir
+
+
+
+3) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
+const app=window.top;
+if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.document.head.querySelector('[data-hide-command]')) {
+    const style= app.document.createElement('style');
+    style.innerHTML='.command-name-request, .command-name-xhr {display: none}';
+    style.setAttribute('data-hide-command-log-request', '');
+    app.document.head.appendChild(style);
+}
+
+4) command.js dosyasina metotlar koyulur. Bu metotlar icin kullanilan classlarda imporuta ihtiyac yoktur.
+
+5) pages klasor altina metot ve variable olusturulabilir. 
+Bu dosyadakiler baska dosyadan import edilebilmek icin pages altindaki dosyanin en altina su kod yazilir:
+import { boynerMan } from "../../pages/boynerMan";
+
+bu dosyadan veri cekecek diger dosyalarin en ustune su kod yazilir:
+import { boynerMan } from "../../pages/boynerMan";
+
+    let data;
+    before(() => {
+        //fixture klasorundan boynerData dosyasinda olusturulan datalari okumak icin
+        cy.fixture("boynerErkek").then(function (fixtureData) {
+            data = fixtureData;
+           
+        })
+    })
+
+sonrasinda sayfa icinde olusturulan data objesi ile oradan veriler ismi ile cekilir.
+
+6) file-upload icin
+
+ https://www.npmjs.com/package/cypress-file-upload sitesinden 
+    npm install --save-dev cypress-file-upload kodunu terminale yazariz
+
+    commands.js dosyasina
+    import 'cypress-file-upload'
+    yazariz
+
+    file-upload yapilan dosyada kod soyledir:
+     cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
+
+7) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
+xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
+
+
+8) Faker kurulumu:
+https://www.npmjs.com/ sitesine gideriz
+faker yazariz
+npm install --save-dev @faker-js/faker kodunu terminale yazip calistiririz
+kullanilan dosyada import yapilir=> import { faker } from '@faker-js/faker' ile
+   
+>>>>>>> main
