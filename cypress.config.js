@@ -12,5 +12,7 @@ module.exports = defineConfig({
     },
 
     specPattern: "**/*.feature",
+    viewportHeight: 700,
+    viewportWidth: 1200
   },
 });

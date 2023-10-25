@@ -1,2 +1,11 @@
 node_modules
+<<<<<<< HEAD
 node_modules
+=======
+node_modules
+.cypress.config.js
+Kurulum.txt
+.package.json
+package.json
+cypress.config.js
+>>>>>>> b46cf85d2ff8792700cf30d93a8cbd3692ba6ee4

@@ -1,7 +1,9 @@
+1) Konsola ilk yazilacak kod:
 npm init
+2) sonra cypress kurmak icin:
 npm install cypress --save-dev
 
-iframe handle icin yapilacaklar.
+3) iframe handle icin yapilacaklar.
 plugin indir
     npmjs.com sayfasindan https://www.npmjs.com/package/cypress-iframe linkine gir
     npm install -D cypress-iframe
@@ -13,13 +15,10 @@ plugin indir
     require('cypress-iframe');
     kodlarindan birini support klasorundeki e2e.js dosyasina yapistir.
 
+4) Drag drop icin
 npmjs.com sitesinden drag-drop plugin indir : npm install --save-dev @4tw/cypress-drag-drop
     kodu terminale yapistir
     import '@4tw/cypress-drag-drop' kodunu e2e.js dosyasina yapistir
-
-file upload için
- https://www.npmjs.com/package/cypress-file-upload sitesinden 
-    npm install --save-dev cypress-file-upload kodunu terminale yazariz
 
 CUCUMBER İÇİN
 1) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
@@ -61,10 +60,12 @@ npm i --save-dev cypress-mochawesome-reporter komutu ile plugin yükle
 
 6) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";  kodu alinir
-ebebek.js dosyasinin basina yapistirilir.
+xxxxxx.js dosyasinin yani stepdefinition dosyasinin basina yapistirilir.
+
 7) feature file ile stepdefinition dosyasi ayni klasor icinde bulunmali.
 
-8) package.json dosyasına 
+DIGER YAPILANDIRMALAR
+1) package.json dosyasına 
 "author": "hakan kara",
   "license": "ISC",
   "devDependencies": {
@@ -79,7 +80,7 @@ ebebek.js dosyasinin basina yapistirilir.
   }
 ekledim
 
-8) TESTLERİ ÇALIŞTIRMA
+2) TESTLERİ ÇALIŞTIRMA
 ./node_modules/.bin/cypress run ==> tum testleri calistirir
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./node_modules/.bin/cypress-tags run -e TAGS='@smoke' ==> tagi @smoke olanlari calistirir
@@ -87,5 +88,3 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./node_modules/.bin/cypress-tags run -e TAGS='not @smoke' ==> tagi  @smoke olanlar haric hepsini calistirir
 
 ) windowsta hata alinca asagidaki kod yazilir
-
-nuri kara branch ekledim

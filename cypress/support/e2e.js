@@ -20,3 +20,12 @@ import '@4tw/cypress-drag-drop'
 import 'cypress-file-upload';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+//xhr lari gizlemek icin
+const app=window.top;
+if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.document.head.querySelector('[data-hide-command]')) {
+    const style= app.document.createElement('style');
+    style.innerHTML='.command-name-request, .command-name-xhr {display: none}';
+    style.setAttribute('data-hide-command-log-request', '');
+    app.document.head.appendChild(style);
+}
