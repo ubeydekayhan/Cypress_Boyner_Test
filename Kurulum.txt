@@ -132,3 +132,11 @@ sonrasinda sayfa icinde olusturulan data objesi ile oradan veriler ismi ile ceki
 
 7) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
 xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
+
+
+8) Faker kurulumu:
+https://www.npmjs.com/ sitesine gideriz
+faker yazariz
+npm install --save-dev @faker-js/faker kodunu terminale yazip calistiririz
+kullanilan dosyada import yapilir=> import { faker } from '@faker-js/faker' ile
+   
