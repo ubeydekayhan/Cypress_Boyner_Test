@@ -18,6 +18,7 @@ import './commands'
 import 'cypress-iframe';
 import '@4tw/cypress-drag-drop'
 import 'cypress-file-upload';
+import 'cypress-fixture-faker';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
