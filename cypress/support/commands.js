@@ -16,4 +16,23 @@ Cypress.Commands.add("verifyTextInElements", (elementLocator, textToVerify, text
             });
           });
       });
+   
   });
+  
+  Cypress.Commands.add("waitforclick", (locator) => {
+    cy.waitUntil(() => 
+        cy.get(locator, { timeout: 12000 }).should('be.visible').then(element => {
+            return element;
+        })
+    ).then(element => {
+        cy.wrap(element).click();
+    });
+});
+
+Cypress.Commands.add("waitAndtype", (locator, text) => {
+  cy.waitUntil(() =>
+      cy.get(locator, { timeout: 12000 }).should('be.visible')
+  ).then(element => {
+      cy.wrap(element).type(text);
+  });
+});

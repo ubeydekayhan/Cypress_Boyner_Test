@@ -1,4 +1,4 @@
-import { Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/steps";
+import { Before ,Given, When, Then, And, Scenario } from "cypress-cucumber-preprocessor/steps";
 import { fa, faker } from '@faker-js/faker';
 const mail = require("../../POM/boyner");
 import { boynerMan } from "../../pages/boynerMan";
@@ -10,7 +10,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 let expectedURL;
 let data;
 let expectedProduct
-before(() => {
+Before(() => {
     //fixture klasorundan boynerData dosyasinda olusturulan datalari okumak icin
     cy.fixture("boynerErkek").then(function (fixtureData) {
         data = fixtureData;

@@ -19,6 +19,7 @@ import 'cypress-iframe';
 import '@4tw/cypress-drag-drop'
 import 'cypress-file-upload';
 import 'cypress-fixture-faker';
+import 'cypress-wait-until';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
@@ -30,3 +31,4 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.
     style.setAttribute('data-hide-command-log-request', '');
     app.document.head.appendChild(style);
 }
+
