@@ -33,19 +33,16 @@ plugin indir
     Bu islemlerden sonra cy.frameLoaded() ve cy.iframe() komutlarini kullanabiliriz.
 
 8) Drag drop icin
-npmjs.com sitesinden drag-drop plugin indir : npm install --save-dev @4tw/cypress-drag-drop
+npmjs.com sitesinden drag-drop plugin indir : 
+npm install --save-dev @4tw/cypress-drag-drop
     kodu terminale yapistir
+
     import '@4tw/cypress-drag-drop' kodunu e2e.js dosyasina yapistir
   2- index.js dosyasina 
   const cucumber = require('cypress-cucumber-preprocessor').default
 
-module.exports = (on, config) => {
-  on('file:preprocessor', cucumber())
-}
-
-ekledik
-
-9) cypress.config.js dosyasina 
+9) Cucumber yapılandırma icin
+ cypress.config.js dosyasina 
 const { defineConfig } = require("cypress");
 const cucumber = require('cypress-cucumber-preprocessor').default 
 module.exports = defineConfig({
@@ -65,20 +62,13 @@ module.exports = defineConfig({
 
 ekle.
 
-10) Mochawesome adlı bir rapor kurmak için
- https://www.npmjs.com/package/cypress-mochawesome-reporter den 
-npm i --save-dev cypress-mochawesome-reporter komutu ile plugin yükle
+10) extension dan "Cucumber (Gherkin) Full Support" kurulur
 
-5) extension dan "Cucumber (Gherkin) Full Support" kurulur
-
-6) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
+11) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";  kodu alinir
 xxxxxx.js dosyasinin yani stepdefinition dosyasinin basina yapistirilir.
 
-7) feature file ile stepdefinition dosyasi ayni klasor icinde bulunmali.
-
-DIGER YAPILANDIRMALAR
-1) package.json dosyasına 
+12) package.json dosyasına 
 "author": "hakan kara",
   "license": "ISC",
   "devDependencies": {
@@ -93,7 +83,13 @@ DIGER YAPILANDIRMALAR
   }
 ekledim
 
-2) TESTLERİ ÇALIŞTIRMA
+13) Mochawesome adlı bir rapor kurmak için
+ https://www.npmjs.com/package/cypress-mochawesome-reporter den 
+npm i --save-dev cypress-mochawesome-reporter komutu ile plugin yükle
+
+14) feature file ile stepdefinition dosyasi ayni klasor icinde bulunmali.
+
+15) TESTLERİ ÇALIŞTIRMA
 ./node_modules/.bin/cypress run ==> tum testleri calistirir
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ./node_modules/.bin/cypress-tags run -e TAGS='@smoke' ==> tagi @smoke olanlari calistirir
@@ -102,7 +98,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ) windowsta hata alinca asagidaki kod yazilir
 
-3) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
+16) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
 const app=window.top;
 if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.document.head.querySelector('[data-hide-command]')) {
     const style= app.document.createElement('style');
@@ -111,9 +107,10 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]') || !app.
     app.document.head.appendChild(style);
 }
 
-4) command.js dosyasina metotlar koyulur. Bu metotlar icin kullanilan classlarda imporuta ihtiyac yoktur.
+17) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
+xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
 
-5) pages klasor altina metot ve variable olusturulabilir. 
+18) pages klasor altina metot ve variable olusturulabilir. 
 Bu dosyadakiler baska dosyadan import edilebilmek icin pages altindaki dosyanin en altina su kod yazilir:
 import { boynerMan } from "../../pages/boynerMan";
 
@@ -131,29 +128,26 @@ import { boynerMan } from "../../pages/boynerMan";
 
 sonrasinda sayfa icinde olusturulan data objesi ile oradan veriler ismi ile cekilir.
 
-6) file-upload icin
+19) file-upload icin
 
  https://www.npmjs.com/package/cypress-file-upload sitesinden 
     npm install --save-dev cypress-file-upload kodunu terminale yazariz
 
-    commands.js dosyasina
+    commands.js dosyasina :
     import 'cypress-file-upload'
     yazariz
 
     file-upload yapilan dosyada kod soyledir:
-     cy.get('#fine-uploader-gallery > .qq-uploader-selector > .qq-upload-button-selector > input').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
+     cy.get('#fine-uploader-gallery').attachFile('junit.png', { fileContent: 'fixtures/junit.png' });
 
-7) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
-xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
-
-8) Faker kurulumu:
+20) Faker kurulumu:
 https://www.npmjs.com/ sitesine gideriz
 faker yazariz
 npm install --save-dev @faker-js/faker kodunu terminale yazip calistiririz
 kullanilan dosyada import yapilir=> import { faker } from '@faker-js/faker' ile
    
 
-9) Chai kütüphanesi assertion kodları
+21) Chai kütüphanesi assertion kodları
 chai.should();
 
 foo.should.be.a('string');
@@ -178,7 +172,7 @@ assert.lengthOf(foo, 3)
 assert.property(tea, 'flavors');
 assert.lengthOf(tea.flavors, 3);
 
-10) Metin içinde büyük küçük harf dikkate almadan arama yapmak için {matchCase:false} kullanilir
+22) Metin içinde büyük küçük harf dikkate almadan arama yapmak için {matchCase:false} kullanilir
 cy.contains('login', {matchCase:false}).click() ==> örnek kod
 
 11) Tüm cypress komutları 
@@ -205,9 +199,26 @@ cy.on('windows:confirm', ()=>{
   return false
 })
 
-15)Popup pencereleri icin
+23)Popup pencereleri icin
 cy.window() //popup pencere kontrol komutu
 .then(($windowsElement) => { //prompta text girecegim demek
   cy.stub($windowsElement, 'prompt').returns('Merhaba bu texti gonderdim')
   cy.get().click() //tamam butonu
   })
+
+  24) Cypress da 500 ücretsiz sunucuda test koşmak için (jenkins gibi)
+   üst köşeden login butona bas
+  Açılan pencerede login olduktan sonra google seç
+  test yapma seçeneği seçilir. takım arkadaşı eklenebilir.
+  ayarları yapıp integrationdan github ve slack bağlanabilir. slack ten test sonucudna mesaj atar.
+  project seç ve koşulacak test ayarı yapılır. create project butona bas.
+  new project açarız
+  burada çıkan kodu project id kodunu cypress.config.js dosyasina yapistir.
+  projectId:"k5ldl34" seklinde olacak bu kod
+  githbu seçeriz
+  verdiği kodu kopyalayıp terminale yapıştırırız
+  testler koşulur
+
+
+
+
