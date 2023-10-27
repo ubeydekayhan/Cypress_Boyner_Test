@@ -1,9 +1,24 @@
-1) Konsola ilk yazilacak kod:
-npm init
-2) sonra cypress kurmak icin:
+1) Nodejs kurulacak.
+https://nodejs.org/en/download sitesinden indirip install yapilacaklar
+
+2)Visual Studio kur.
+https://code.visualstudio.com/download
+
+3)Visual Studio aç. Konsola ilk yazilacak kod:
+npm init            veya         npm init -y 
+
+4) sonra cypress kurmak icin:
 npm install cypress --save-dev
 
-3) iframe handle icin yapilacaklar.
+5) sonra cypress acmak icin konsola su kodu yaz:
+npx cypress open
+
+
+6) CUCUMBER KURULUMU İÇİN
+https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
+npm install --save-dev cypress-cucumber-preprocessor alip terminale yapıştır. install et.
+
+7) iframe handle icin yapilacaklar.
 plugin indir
     npmjs.com sayfasindan https://www.npmjs.com/package/cypress-iframe linkine gir
     npm install -D cypress-iframe
@@ -15,16 +30,13 @@ plugin indir
     require('cypress-iframe');
     kodlarindan birini support klasorundeki e2e.js dosyasina yapistir.
 
-4) Drag drop icin
+    Bu islemlerden sonra cy.frameLoaded() ve cy.iframe() komutlarini kullanabiliriz.
+
+8) Drag drop icin
 npmjs.com sitesinden drag-drop plugin indir : npm install --save-dev @4tw/cypress-drag-drop
     kodu terminale yapistir
     import '@4tw/cypress-drag-drop' kodunu e2e.js dosyasina yapistir
-
-CUCUMBER İÇİN
-1) https://www.npmjs.com/package/cypress-cucumber-preprocessor sitesinden
-npm install --save-dev cypress-cucumber-preprocessor alip terminale yapıştır. install et.
-
-  2) index.js dosyasina 
+  2- index.js dosyasina 
   const cucumber = require('cypress-cucumber-preprocessor').default
 
 module.exports = (on, config) => {
@@ -33,7 +45,7 @@ module.exports = (on, config) => {
 
 ekledik
 
-3) cypress.config.js dosyasina 
+9) cypress.config.js dosyasina 
 const { defineConfig } = require("cypress");
 const cucumber = require('cypress-cucumber-preprocessor').default 
 module.exports = defineConfig({
@@ -53,7 +65,8 @@ module.exports = defineConfig({
 
 ekle.
 
-4-  https://www.npmjs.com/package/cypress-mochawesome-reporter den 
+10) Mochawesome adlı bir rapor kurmak için
+ https://www.npmjs.com/package/cypress-mochawesome-reporter den 
 npm i --save-dev cypress-mochawesome-reporter komutu ile plugin yükle
 
 5) extension dan "Cucumber (Gherkin) Full Support" kurulur
@@ -136,11 +149,9 @@ sonrasinda sayfa icinde olusturulan data objesi ile oradan veriler ismi ile ceki
 7) commands.js dosyasi function olusturmak icindir. Cypress.Commands.add("xxxxx") seklinde function tanimlama baslar.
 xxxxx yerine function a verilecek isim girilir. Verilen isim baska bir sayfada cy.xxxxxx seklinde import etmeden kullanilir.
 
-
 8) Faker kurulumu:
 https://www.npmjs.com/ sitesine gideriz
 faker yazariz
 npm install --save-dev @faker-js/faker kodunu terminale yazip calistiririz
 kullanilan dosyada import yapilir=> import { faker } from '@faker-js/faker' ile
    
->>>>>>> main
