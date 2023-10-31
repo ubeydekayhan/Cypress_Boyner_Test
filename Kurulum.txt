@@ -96,7 +96,10 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ./node_modules/.bin/cypress-tags run -e TAGS='not @smoke' ==> tagi  @smoke olanlar haric hepsini calistirir
 
-) windowsta hata alinca asagidaki kod yazilir
+npx cypress run ==> headless olarak run eder
+npx cypress run --headed 
+npx cypress run --browser chrome --headed ==> chrome ile
+npx cypress run --spec (buraya dosya yolu gelecek)
 
 16) XRH'lari gizlemek icin e2e.js dosyasina asagidaki kod yazilir
 const app=window.top;
